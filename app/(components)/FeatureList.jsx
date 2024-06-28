@@ -4,7 +4,7 @@ import { FaHeadset, FaShippingFast, FaIndustry, FaMedal } from 'react-icons/fa';
 const FeatureList = () => {
   return (
     <>
-      <div className="container mt-5">
+      <div className="container-fluid mt-5 bg-light p-5">
         <div className="row">
           <div className="col-md-3">
             <div className="card h-100 text-center p-3 bg-light">
