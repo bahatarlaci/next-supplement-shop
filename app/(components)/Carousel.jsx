@@ -3,7 +3,7 @@ import React from 'react';
 const Carousel = () => {
   return (
     <>
-      <div className="container mt-5">
+      <div className="container mt-4">
         <div
           id="supplementCarousel"
           className="carousel slide"

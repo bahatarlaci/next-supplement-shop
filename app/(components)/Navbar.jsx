@@ -6,15 +6,16 @@ import {
   FaPrescriptionBottleAlt,
   FaBolt,
 } from 'react-icons/fa';
+import Link from 'next/link';
 
 const Navbar = () => {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container">
-          <a className="navbar-brand" href="#">
+          <Link href="/" className="navbar-brand">
             Supplement Shop
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -29,27 +30,22 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
-                  <FiHome /> Anasayfa
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
+                <a className="nav-link" href="/Category/1">
                   <FaFlask /> Protein Tozu
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <a className="nav-link" href="/Category/2">
                   <FaDumbbell /> Kilo & Hacim
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <a className="nav-link" href="/Category/3">
                   <FaPrescriptionBottleAlt /> Amino Asit
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <a className="nav-link" href="/Category/4">
                   <FaBolt /> Kreatin
                 </a>
               </li>
