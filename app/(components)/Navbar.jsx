@@ -1,14 +1,8 @@
-import React from 'react';
-import { FiHome, FiShoppingCart } from 'react-icons/fi';
-import {
-  FaFlask,
-  FaDumbbell,
-  FaPrescriptionBottleAlt,
-  FaBolt,
-} from 'react-icons/fa';
-import Link from 'next/link';
+import React from "react";
+import { FiShoppingCart } from "react-icons/fi";
+import Link from "next/link";
 
-const Navbar = () => {
+const Navbar = ({ items }) => {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -29,26 +23,13 @@ const Navbar = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a className="nav-link" href="/Category/1">
-                  <FaFlask /> Protein Tozu
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/Category/2">
-                  <FaDumbbell /> Kilo & Hacim
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/Category/3">
-                  <FaPrescriptionBottleAlt /> Amino Asit
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/Category/4">
-                  <FaBolt /> Kreatin
-                </a>
-              </li>
+              {items.map((item) => (
+                <li key={item.id} className="nav-item">
+                  <Link href={`/Category/${item.id}`} className="nav-link">
+                    {item.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           <div className="d-flex">
