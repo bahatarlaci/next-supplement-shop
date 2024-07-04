@@ -1,5 +1,4 @@
 import React from "react";
-import { FiShoppingCart } from "react-icons/fi";
 
 const ProductList = ({ items }) => {
   return (
@@ -15,11 +14,11 @@ const ProductList = ({ items }) => {
                   alt={item.name}
                 />
                 <div className="card-body">
-                  <h5 className="card-title">{item.name}</h5>
-                  <p className="card-text">{item.price} TL</p>
-                  <button className="btn btn-primary">
-                    <FiShoppingCart /> Sepete Ekle
-                  </button>
+                  <div className="d-flex justify-content-between">
+                    <p className="discount-badge">Ücretsiz Kargo</p>
+                  </div>
+                  <h5 className="card-title product-title">{item.name}</h5>
+                  <p className="card-text product-price">{item.price} TL</p>
                 </div>
               </div>
             </div>
