@@ -109,13 +109,37 @@ const productListItems = [
   },
 ];
 
+const featureListItems = [
+  {
+    id: 1,
+    title: "ÜRÜN DESTEĞİ",
+    description:
+      "Aldığınız ürünler ile ilgili bize kolayca ulaşabilir ve merak ettiklerinizi uzman ekibimize sorabilirsiniz.",
+    icon: "bi bi-chat-left-text-fill",
+  },
+  {
+    id: 2,
+    title: "HIZLI KARGO",
+    description:
+      "400 TL ve üzeri ürünlerde kargo ücretsiz. Kargolar en hızlı şekilde güzelce paketlenip adresinize gönderilmektedir.",
+    icon: "bi bi-truck",
+  },
+  {
+    id: 3,
+    title: "ÜRETİM",
+    description:
+      "Ürünlerimizi gıda üretim kalite standartlarına uygun ve sertifikasyonlarına sahip kendi üretim tesisimizde üretiyoruz.",
+    icon: "bi bi-building",
+  },
+];
+
 export default function Home() {
   return (
     <>
       <Navbar items={navbarListItems} />
       <Carousel items={carouselListItems} />
       <ProductList items={productListItems} />
-      <FeatureList />
+      <FeatureList items={featureListItems} />
       <Footer />
     </>
   );

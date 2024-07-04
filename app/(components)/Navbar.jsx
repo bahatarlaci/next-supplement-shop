@@ -1,5 +1,4 @@
 import React from "react";
-import { FiShoppingCart } from "react-icons/fi";
 import Link from "next/link";
 
 const Navbar = ({ items }) => {
@@ -34,7 +33,8 @@ const Navbar = ({ items }) => {
           </div>
           <div className="d-flex">
             <a href="#" className="btn btn-outline-primary">
-              <FiShoppingCart /> Sepetim
+              <i className="bi bi-cart-fill me-2"></i>
+              Sepetim
             </a>
           </div>
         </div>
