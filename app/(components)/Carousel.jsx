@@ -1,73 +1,30 @@
-import React from "react";
+"use client";
 
-const Carousel = ({ items }) => {
+import React from "react";
+import { Container, Row, Carousel } from "react-bootstrap";
+
+const MainCarousel = ({ items }) => {
   return (
-    <>
-      <div className="container mt-4">
-        <div
-          id="supplementCarousel"
-          className="carousel slide"
-          data-bs-ride="carousel"
-        >
-          <div className="carousel-indicators">
-            {items.map((item, index) => (
-              <button
-                key={item.id}
-                type="button"
-                data-bs-target="#supplementCarousel"
-                data-bs-slide-to={index}
-                className={index === 0 ? "active" : ""}
-                aria-current={index === 0 ? "true" : ""}
-                aria-label={`Slide ${index + 1}`}
-              ></button>
-            ))}
-          </div>
-          <div className="carousel-inner">
-            {items.map((item, index) => (
-              <div
-                key={item.id}
-                className={`carousel-item ${index === 0 ? "active" : ""}`}
-              >
-                <img
-                  src={item.image}
-                  className="d-block w-100"
-                  alt={item.title}
-                />
-                <div className="carousel-caption d-none d-md-block">
-                  <h5>{item.title}</h5>
-                  <p>{item.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <button
-            className="carousel-control-prev"
-            type="button"
-            data-bs-target="#supplementCarousel"
-            data-bs-slide="prev"
-          >
-            <span
-              className="carousel-control-prev-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button
-            className="carousel-control-next"
-            type="button"
-            data-bs-target="#supplementCarousel"
-            data-bs-slide="next"
-          >
-            <span
-              className="carousel-control-next-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="visually-hidden">Next</span>
-          </button>
-        </div>
-      </div>
-    </>
+    <Container className="mt-4">
+      <Row>
+        <Carousel>
+          {items.map((item) => (
+            <Carousel.Item key={item.id}>
+              <img
+                className="d-block w-100"
+                src={item.image}
+                alt={item.title}
+              />
+              <Carousel.Caption>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </Carousel.Caption>
+            </Carousel.Item>
+          ))}
+        </Carousel>
+      </Row>
+    </Container>
   );
 };
 
-export default Carousel;
+export default MainCarousel;

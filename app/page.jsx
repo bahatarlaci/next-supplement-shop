@@ -1,8 +1,11 @@
-import Carousel from "./(components)/Carousel";
-import FeatureList from "./(components)/FeatureList";
-import Footer from "./(components)/Footer";
-import Navbar from "./(components)/Navbar";
-import ProductList from "./(components)/ProductList";
+"use client";
+
+import Carousel from "@/app/(components)/Carousel";
+import FeatureList from "@/app/(components)/FeatureList";
+import Footer from "@/app/(components)/Footer";
+import Navbar from "@/app/(components)/Navbar";
+import ProductList from "@/app/(components)/ProductList";
+import { useEffect, useState } from "react";
 
 const navbarListItems = [
   { id: 1, title: "Protein Tozu", url: "/protein-tozu" },
@@ -13,27 +16,6 @@ const navbarListItems = [
     url: "/amino-asit",
   },
   { id: 4, title: "Kreatin", url: "/kreatin" },
-];
-
-const carouselListItems = [
-  {
-    id: 1,
-    title: "Product 1",
-    description: "Description 1",
-    image: "https://dummyimage.com/800x300/000/fff",
-  },
-  {
-    id: 2,
-    title: "Product 2",
-    description: "Description 2",
-    image: "https://dummyimage.com/800x300/000/fff",
-  },
-  {
-    id: 3,
-    title: "Product 3",
-    description: "Description 3",
-    image: "https://dummyimage.com/800x300/000/fff",
-  },
 ];
 
 const productListItems = [
@@ -133,11 +115,26 @@ const featureListItems = [
   },
 ];
 
+const getCarousels = async () => {
+  try {
+    const res = await fetch("http://localhost:3000/api/Carousels", {
+      cache: "no-store",
+    });
+    return res.json();
+  } catch (error) {
+    console.error("Failed to get tickets", error);
+  }
+};
+
 export default function Home() {
+  const [carousels, setCarousels] = useState([]);
+  useEffect(() => {
+    getCarousels().then((data) => setCarousels(data));
+  }, []);
   return (
     <>
       <Navbar items={navbarListItems} />
-      <Carousel items={carouselListItems} />
+      <Carousel items={carousels} />
       <ProductList items={productListItems} />
       <FeatureList items={featureListItems} />
       <Footer />
