@@ -1,30 +1,36 @@
 import React from "react";
+import { Card, Col, Container, Row } from "react-bootstrap";
 
 const ProductList = ({ items }) => {
   return (
     <>
-      <div className="container mt-5 mb-5">
-        <div className="row row-cols-1 row-cols-md-5 g-4">
+      <Container className="mt-5 mb-5">
+        <Row className="row-cols-1 row-cols-md-5 g-4">
           {items.map((item) => (
-            <div className="col">
-              <div className="card h-100" key={item.id}>
-                <img
+            <Col key={item.id}>
+              <Card className="card h-100">
+                <Card.Img
+                  variant="top"
                   src={item.image}
                   className="card-img-top"
                   alt={item.name}
                 />
-                <div className="card-body">
+                <Card.Body className="card-body">
                   <div className="d-flex justify-content-between">
                     <p className="discount-badge">Ücretsiz Kargo</p>
                   </div>
-                  <h5 className="card-title product-title">{item.name}</h5>
-                  <p className="card-text product-price">{item.price} TL</p>
-                </div>
-              </div>
-            </div>
+                  <Card.Title className="card-title product-title">
+                    {item.name}
+                  </Card.Title>
+                  <Card.Text className="card-text product-price">
+                    {item.price} TL
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
           ))}
-        </div>
-      </div>
+        </Row>
+      </Container>
     </>
   );
 };
