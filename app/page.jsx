@@ -18,79 +18,6 @@ const navbarListItems = [
   { id: 4, title: "Kreatin", url: "/kreatin" },
 ];
 
-const productListItems = [
-  {
-    id: 1,
-    name: "Product 1",
-    price: 100,
-    image: "https://dummyimage.com/300x300/000/fff",
-    categoryId: Math.floor(Math.random() * 4) + 1,
-  },
-  {
-    id: 2,
-    name: "Product 2",
-    price: 200,
-    image: "https://dummyimage.com/300x300/000/fff",
-    categoryId: Math.floor(Math.random() * 4) + 1,
-  },
-  {
-    id: 3,
-    name: "Product 3",
-    price: 300,
-    image: "https://dummyimage.com/300x300/000/fff",
-    categoryId: Math.floor(Math.random() * 4) + 1,
-  },
-  {
-    id: 4,
-    name: "Product 4",
-    price: 400,
-    image: "https://dummyimage.com/300x300/000/fff",
-    categoryId: Math.floor(Math.random() * 4) + 1,
-  },
-  {
-    id: 5,
-    name: "Product 5",
-    price: 500,
-    image: "https://dummyimage.com/300x300/000/fff",
-    categoryId: Math.floor(Math.random() * 4) + 1,
-  },
-  {
-    id: 6,
-    name: "Product 6",
-    price: 600,
-    image: "https://dummyimage.com/300x300/000/fff",
-    categoryId: Math.floor(Math.random() * 4) + 1,
-  },
-  {
-    id: 7,
-    name: "Product 7",
-    price: 700,
-    image: "https://dummyimage.com/300x300/000/fff",
-    categoryId: Math.floor(Math.random() * 4) + 1,
-  },
-  {
-    id: 8,
-    name: "Product 8",
-    price: 800,
-    image: "https://dummyimage.com/300x300/000/fff",
-    categoryId: Math.floor(Math.random() * 4) + 1,
-  },
-  {
-    id: 9,
-    name: "Product 9",
-    price: 900,
-    image: "https://dummyimage.com/300x300/000/fff",
-    categoryId: Math.floor(Math.random() * 4) + 1,
-  },
-  {
-    id: 10,
-    name: "Product 10",
-    price: 1000,
-    image: "https://dummyimage.com/300x300/000/fff",
-    categoryId: Math.floor(Math.random() * 4) + 1,
-  },
-];
-
 const featureListItems = [
   {
     id: 1,
@@ -126,16 +53,29 @@ const getCarousels = async () => {
   }
 };
 
+const getProducts = async () => {
+  try {
+    const res = await fetch("http://localhost:3000/api/Products", {
+      cache: "no-store",
+    });
+    return res.json();
+  } catch (error) {
+    console.error("Failed to get tickets", error);
+  }
+};
+
 export default function Home() {
   const [carousels, setCarousels] = useState([]);
+  const [productList, setProductList] = useState([]);
   useEffect(() => {
     getCarousels().then((data) => setCarousels(data));
+    getProducts().then((data) => setProductList(data));
   }, []);
   return (
     <>
       <Navbar items={navbarListItems} />
       <Carousel items={carousels} />
-      <ProductList items={productListItems} />
+      <ProductList items={productList} />
       <FeatureList items={featureListItems} />
       <Footer />
     </>
